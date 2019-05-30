@@ -17,7 +17,7 @@ func main() {
     logger := logrus.New()
     logger.SetOutput(os.Stdout)
 
-    logger.Info("Starting the application", diagostics.Version, diagostics.Commit, diagostics.BuildTime)
+    logger.Infof("Starting the application Version=%v Commit=%v BuildTime=%v", diagostics.Version, diagostics.Commit, diagostics.BuildTime)
 	port := os.Getenv("PORT")
 
 	if port != "" {
@@ -60,6 +60,6 @@ func main() {
 	err := server.Shutdown(context.Background())
 
 	if err != nil {
-		logger.Error("Got an error during service shutdown: %v", err.Error())
+		logger.Errorf("Got an error during service shutdown: %v", err.Error())
 	}
 }

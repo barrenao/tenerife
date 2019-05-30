@@ -6,30 +6,13 @@ import (
 
 )
 
-func RedianessHandler(logger *logrus.Logger) http.HandlerFunc {
-
-	return func(w http.ResponseWriter, r *http.Request) {
-		logger.Info("Readianess Response")
-		w.WriteHeader(http.StatusOK)
-	}
-
-}
 
 func HomeHandler(logger *logrus.Logger) http.HandlerFunc {
 
   return func(w http.ResponseWriter, r *http.Request) {
-		logger.Info("Handler Response")
+		logger.Info("Catch a home request")
 		w.WriteHeader(http.StatusOK)
 	}
 
 }
 
-
-func LiveanessHandler(logger *logrus.Logger) http.HandlerFunc {
-
-	return func(w http.ResponseWriter, r *http.Request) {
-		logger.Info("Liveaness Response")
-		w.WriteHeader(http.StatusOK)
-	}
-
-}
