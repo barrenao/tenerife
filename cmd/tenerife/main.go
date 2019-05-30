@@ -17,7 +17,7 @@ func main() {
     logger := logrus.New()
     logger.SetOutput(os.Stdout)
 
-    logger.Info("Starting the application")
+    logger.Info("Starting the application", diagostics.Version, diagostics.Commit, diagostics.BuildTime)
 	port := os.Getenv("PORT")
 
 	if port != "" {
@@ -43,10 +43,8 @@ func main() {
 		shutdown <- err
 	}()
 
-	logger.Info("The service is ")
-
 	select {
-		case killAllSignal := <- interrupt
+		case killAllSignal := <- interrupt:
 			switch killAllSignal {
 			case os.Interrupt:
 				logger.Print("Got SIGINT")
