@@ -20,7 +20,7 @@ func main() {
     logger.Infof("Starting the application Version=%v Commit=%v BuildTime=%v", diagostics.Version, diagostics.Commit, diagostics.BuildTime)
 	port := os.Getenv("PORT")
 
-	if port != "" {
+	if port == "" {
 		logger.Fatal("Port is not provided")
 	}
 

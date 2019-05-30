@@ -18,7 +18,7 @@ RUN make build
 # Final stage: Run the binary
 FROM scratch AS Runner
 
-ENV PORT 8090
+ENV PORT 8080
 
 # certificates to interact with other services
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
@@ -31,4 +31,4 @@ USER tenerife
 COPY --from=builder /tenerife/bin/tenerife /tenerife
 EXPOSE $PORT
 
-CMD ["tenerife"]
+CMD ["./tenerife"]
