@@ -1,15 +1,13 @@
 package application
 
 import (
-	"github.com/sirupsen/logrus"
+	"github.com/sirupsen/logrus/hooks/test"
 	"net/http/httptest"
-	"os"
 	"testing"
 )
 
 func TestHomeHandler(t *testing.T) {
-	logger := logrus.New()
-	logger.SetOutput(os.Stdout)
+	logger, _ := test.NewNullLogger()
 	req := httptest.NewRequest("Get","http://example.com/foo", nil)
 	w := httptest.NewRecorder()
 	handler := HomeHandler(logger)
